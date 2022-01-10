@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  server-0:
+    build: ./py_server/
+    hostname: server-0
+    ports:
+      - 5000:5000
+    volumes:
+      - ./py_server:/code
+    networks:
+      - integration
+    environment: 
+      - SERVICE_NAME=server-0
+      - DATABASE_HOST=database-0
+    depends_on:
+      mysql-0:
+        condition: service_healthy
+
+  mysql-0:
+    image: mysql:5.7
+    hostname: database-0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 1s
+      retries: 5
+    networks:
+      - integration
+
+  client-0:
+    build: ./py_client/
+    hostname: client-0
+    ports:
+      - 5001:5000
+    volumes:
+      - ./py_client:/code
+    networks:
+      - integration
+    environment: 
+      - SERVICE_NAME=client-0
+      - TARGET_SERVER_NAME=server-0
+    depends_on:
+      - server-0
+
+  client-1:
+    build: ./py_client/
+    hostname: client-1
+    ports:
+      - 5002:5000
+    volumes:
+      - ./py_client:/code
+    networks:
+      - integration
+    environment: 
+      - SERVICE_NAME=client-1
+      - TARGET_SERVER_NAME=server-0
+    depends_on:
+      - server-0
+
+networks:
+  integration:
+    name: "shared-network"
+    driver: "bridge"

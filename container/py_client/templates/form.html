@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<h1>BENVENUTI DA: [{{ service_name }}]!</h1>
+
+<form method="post">
+    <label for="title">Ricerca una lista di utenti</label>
+    <br>
+    <input type="text" name="user_name"
+           placeholder="User name"
+           value="{{ request.form['user_name'] }}"></input>
+    <br>
+    <button type="submit">Invia</button>
+</form>
