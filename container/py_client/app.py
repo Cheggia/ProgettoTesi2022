@@ -13,7 +13,7 @@ target_server_name = ''
 @app.route('/check')
 def check():
     print('Entered healthcheck', file=sys.stderr)
-    return 'Service[ {} ]is healthy'.format(service_name)
+    return 'Service [{}] is healthy'.format(service_name)
 
 # Form route
 @app.route('/form', methods=('GET', 'POST'))
