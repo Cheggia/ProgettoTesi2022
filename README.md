@@ -1,12 +1,12 @@
 # RETE E CONTROLLI
 
-            --------------------------------------------------------
-            | client-0 <--------                                   |
-            |                  |                                   |
-host docker |                  |-------->server-0<-------->mysql-0 |
-            |                  |                                   |
-            | client-1 <--------                                   |
-            --------------------------------------------------------
+              --------------------------------------------------------
+              | client-0 <--------                                   |
+              |                  |                                   |
+--host docker |                  |-------->server-0<-------->mysql-0 |
+              |                  |                                   |
+              | client-1 <--------                                   |
+              --------------------------------------------------------
 
 La rete è composta da due client che interrogqano un server con delle query. 
 Il server comunica con mysql, prende i dati e li rispedisce al client che ha fatto la richiesta.
