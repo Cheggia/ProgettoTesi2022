@@ -1,7 +1,7 @@
 control 'Controllo di base dei container' do
   impact 0.5
   title 'Il codice controlla gli aspetti base del container'
-  describe docker_container(name: 'container_mysql-0_1') do
+  describe docker_container(name: 'mysql') do
      it { should exist }
      it { should be_running }
      # Next command must be a failure during test
@@ -11,7 +11,7 @@ control 'Controllo di base dei container' do
      its('tag') { should eq '5.7' }
      its('ports') { should eq '0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp'}
   end    
-     describe docker_container(name: 'container_server-0_1') do
+     describe docker_container(name: 'server-0') do
      it { should exist }
      it { should be_running }
      # Next command must be a failure during test
@@ -20,7 +20,7 @@ control 'Controllo di base dei container' do
      its('repo') { should eq 'container_server-0' }
      its('ports') { should eq '0.0.0.0:5000->5000/tcp, :::5000->5000/tcp'}
   end
-     describe docker_container(name: 'container_client-0_1') do
+     describe docker_container(name: 'client-0') do
      it { should exist }
      it { should be_running }
      # Next command must be a failure during test
@@ -29,7 +29,7 @@ control 'Controllo di base dei container' do
      its('repo') { should eq 'container_client-0' }
      its('ports') { should eq '0.0.0.0:5001->5000/tcp, :::5001->5000/tcp'}
   end
-     describe docker_container(name: 'container_client-1_1') do
+     describe docker_container(name: 'client-1') do
      it { should exist }
      it { should be_running }
      # Next command must be a failure during test
@@ -39,3 +39,5 @@ control 'Controllo di base dei container' do
      its('ports') { should eq '0.0.0.0:5002->5000/tcp, :::5002->5000/tcp'}
   end
 end
+
+

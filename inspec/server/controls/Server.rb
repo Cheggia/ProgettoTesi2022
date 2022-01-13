@@ -12,7 +12,7 @@ control "Connessione con mysql-0" do
   impact 0.7                                
   title "Controlli vari tipo host"             
   desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP"
-  describe host('mysql-0', port:3306, protocol:'tcp') do
+  describe host('mysql', port:3306, protocol:'tcp') do
     it { should be_reachable }
     it { should be_resolvable }
     its('connection') { should_not match /connection refused/ }

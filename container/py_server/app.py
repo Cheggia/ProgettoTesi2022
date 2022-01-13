@@ -55,9 +55,6 @@ def join_tuple_elements(tup):
 
 # Populate the database
 
-# TODO: Handle the database population operation
-# so that the initial data is not inserted every 
-# time the `docker-compose up` command is launched
 def perform_fixtures(filename):
     fd = open(filename, 'r')
     sqlFile = fd.read()
