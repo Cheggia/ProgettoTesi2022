@@ -13,6 +13,8 @@ Il server comunica con mysql, prende i dati e li rispedisce al client che ha fat
 Tramite localhost:5001/form e localhost:5002/form si possono fare le query per verificare il funzionamento.
 
 La cartella container contiene tutto il materiale per creare la rete di container tramite docker-compose
+PER CREARE LA RETE E' NECESSARIO DOCKER COMPOSE 1.29.2
+lanciare docker-compose up -d dalla cartella contenente il file docker-compose.yml 
 
 La cartella inspec contiene i vari controlli da fare sulla rete.
 
@@ -25,3 +27,5 @@ Diversi controlli sono previsti per vari parti della rete in modo da mostrare va
 	- in questo momento non ha controlli realizzati
 -i controlli della cartella mysql vanno lanciati sui container mysql-0
 	- controllano command
+	
+
