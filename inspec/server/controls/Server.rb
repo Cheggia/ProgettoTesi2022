@@ -1,4 +1,4 @@
-control "Porta 5000" do                        
+control "Porta" do                        
   impact 0.7                                
   title "Controllo porta 5000 su server-0"             
   desc "Si controlla che la porta 5000 sia in ascolto per connessioni tcp"
@@ -8,10 +8,10 @@ control "Porta 5000" do
   end
 end
 
-control "Connessione con mysql-0" do                        
+control "Connessione mysql" do                        
   impact 0.7                                
-  title "Controlli vari tipo host"             
-  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP"
+  title "Controllo comunicazione con database"             
+  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP deciso in fase di costruzione container"
   describe host('mysql', port:3306, protocol:'tcp') do
     it { should be_reachable }
     it { should be_resolvable }
@@ -20,10 +20,10 @@ control "Connessione con mysql-0" do
   end
 end
 
-control "Connessione con client-0" do                        
+control "Connessione client-0" do                        
   impact 0.7                                
   title "Controlli vari tipo host"             
-  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP"
+  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP deciso in fase di costruzione container"
   describe host('client-0', port:5001, protocol:'tcp') do
     it { should be_reachable }
     it { should be_resolvable }
@@ -32,10 +32,10 @@ control "Connessione con client-0" do
   end
 end
 
-control "Connessione con client-1" do                        
+control "Connessione client-1" do                        
   impact 0.7                                
   title "Controlli vari tipo host"             
-  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP"
+  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP deciso in fase di costruzione container"
   describe host('client-1', port:5002, protocol:'tcp') do
     it { should be_reachable }
     it { should be_resolvable }
@@ -44,10 +44,10 @@ control "Connessione con client-1" do
   end
 end
 
-control "Connessione con localhost" do                        
+control "Connessione localhost" do                        
   impact 0.7                                
   title "Controlli vari tipo host"             
-  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP"
+  desc "Si controlla che l'host sia raggiungibile e che corrisponda l'indirizzo IP deciso in fase di costruzione container"
   describe host('localhost', port:5000, protocol:'tcp') do
     it { should be_reachable }
     it { should be_resolvable }
