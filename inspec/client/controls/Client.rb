@@ -1,6 +1,6 @@
 control "Porta 5000, 5001, 5002" do                        
   impact 0.7                                
-  title "Controllo porta 5000 sul client"             
+  title "Controllo porte"             
   desc "Si controlla che la porta 5000 sia in ascolto per connessioni tcp"
   describe port('5000') do
      it {should be_listening}
@@ -28,8 +28,8 @@ end
 
 control "Processo app.py" do                        
   impact 0.7                                
-  title "Controlli che il processo sia in esecuzione"             
-  desc ""
+  title "Controllo che il processo sia in esecuzione"             
+  desc "il processo python app.py è il processo che origina il container e che inidica al container il suo comportamento"
   describe processes('python app.py') do
     it { should exist }
     its('users') { should eq ['root'] }
